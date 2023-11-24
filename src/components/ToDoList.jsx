@@ -1,17 +1,16 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import {ToDoItem} from '../components/ToDoItem';
 
 export function ToDoList({tasks, deleteTask}) {
   return (
     <View>
       {tasks.map((item, index) => (
-        <ToDoItem
+        <TouchableOpacity
           key={index}
-          item={item}
-          index={index}
-          deleteTask={deleteTask}
-        />
+          style={styles.container}
+          onPress={() => deleteTask(index)}>
+          <Text>{item.text}</Text>
+        </TouchableOpacity>
       ))}
     </View>
   );
